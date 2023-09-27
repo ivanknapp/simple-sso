@@ -1,0 +1,19 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: simple-service
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          client-id: test-client
+          client-secret: test-client
+          introspection-uri: http://localhost:8081/oauth2/token-info
+
+
+#logging:
+#  level:
+#    root: DEBUG
+#    org.springframework.security: TRACE
