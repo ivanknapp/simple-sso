@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: simple-sso
+  security:
+    oauth2:
+      authorizationserver:
+        issuer-url: http://localhost:${server.port}
+        introspection-endpoint: /oauth2/token-info
+      client:
+        registration:
+          github:
+            #clientId: VAULT
+            #clientSecret: VAULT
+          google:
+            #clientId: VAULT
+            #clientSecret: VAULT
+          yandex:
+            provider: yandex
+            #clientId: VAULT
+            #clientSecret: VAULT
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/yandex
+            authorizationGrantType: authorization_code
+            clientName: Yandex
+        provider:
+          yandex:
+            authorization-uri: https://oauth.yandex.ru/authorize
+            token-uri: https://oauth.yandex.ru/token
+            user-name-attribute: default_email
+            userInfoUri: https://login.yandex.ru/info
+
+#logging:
+#  level:
+#    root: DEBUG
+#    org.springframework.security: TRACE
