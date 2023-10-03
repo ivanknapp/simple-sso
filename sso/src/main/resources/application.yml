@@ -17,6 +17,9 @@ spring:
           google:
             #clientId: VAULT
             #clientSecret: VAULT
+            scope:
+              - email
+              - profile
           yandex:
             provider: yandex
             #clientId: VAULT

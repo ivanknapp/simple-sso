@@ -39,7 +39,6 @@ public class DefaultUserService implements UserService {
         return AuthorizedUserMapper.map(entity, provider);
     }
 
-
     /**
      * Метод описывающий создание/обновление UserEntity на основе OAuth2User полученного из провайдера Github
      */
