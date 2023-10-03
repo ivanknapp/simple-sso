@@ -31,6 +31,19 @@ spring:
             user-name-attribute: default_email
             userInfoUri: https://login.yandex.ru/info
 
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/spring"
+    #username: VAULT
+    #password: VAULT
+    driver-class-name: "org.postgresql.Driver"
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      minimum-idle: 10
+      initialization-fail-timeout: 1
+      leak-detection-threshold: 0
+      pool-name: "HikariPool-"
+
 #logging:
 #  level:
 #    root: DEBUG
