@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.knapp.simplesso.mapper.AuthorizedUserMapper;
-import ru.knapp.simplesso.repository.UserRepository;
+import ru.knapp.simplesso.dao.repository.UserRepository;
 
 @RequiredArgsConstructor
 @Service

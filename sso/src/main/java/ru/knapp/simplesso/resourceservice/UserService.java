@@ -3,7 +3,7 @@ package ru.knapp.simplesso.resourceservice;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import ru.knapp.simplesso.domain.AuthProvider;
 import ru.knapp.simplesso.domain.AuthorizedUser;
-import ru.knapp.simplesso.domain.UserEntity;
+import ru.knapp.simplesso.dao.entity.UserEntity;
 
 public interface UserService {
 

@@ -1,4 +1,4 @@
-package ru.knapp.simplesso.config;
+package ru.knapp.simplesso.config.security;
 
 import lombok.Setter;
 import lombok.experimental.Accessors;

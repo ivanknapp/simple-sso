@@ -5,13 +5,15 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @Slf4j
+@EnableJpaRepositories(basePackages = "ru.knapp.simplesso.dao.repository")
 @Configuration
-public class CORSConfig {
+public class AppConfig {
 
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {

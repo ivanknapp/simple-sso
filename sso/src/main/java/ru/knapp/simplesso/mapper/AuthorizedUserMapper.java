@@ -3,7 +3,7 @@ package ru.knapp.simplesso.mapper;
 import lombok.experimental.UtilityClass;
 import ru.knapp.simplesso.domain.AuthProvider;
 import ru.knapp.simplesso.domain.AuthorizedUser;
-import ru.knapp.simplesso.domain.UserEntity;
+import ru.knapp.simplesso.dao.entity.UserEntity;
 
 import java.util.Collections;
 
@@ -14,7 +14,7 @@ public class AuthorizedUserMapper {
         return AuthorizedUser.builder(entity.getEmail(), entity.getPasswordHash(), Collections.emptyList())
             .id(entity.getId())
             .firstName(entity.getFirstName())
-            .secondName(entity.getSecondName())
+            .secondName(entity.getLastName())
             .middleName(entity.getMiddleName())
             .birthday(entity.getBirthday())
             .avatarUrl(entity.getAvatarUrl())
