@@ -24,5 +24,5 @@ public class IntrospectionPrincipal {
     private String avatarUrl;
     private String username;
     private String email;
-    private Collection<? extends GrantedAuthority> authorities;
+    private Collection<String> authorities;
 }

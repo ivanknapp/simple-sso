@@ -6,7 +6,7 @@ create sequence sso.system_oauth2_clients_sq START 1;
 
 CREATE TABLE sso.system_oauth2_clients
 (
-    system_client_id              BIGINT        NOT NULL DEFAULT nextval('sso.system_oauth2_clients_sq'),
+    id                            BIGINT        NOT NULL DEFAULT nextval('sso.system_oauth2_clients_sq'),
     client_id                     VARCHAR(100)  NOT NULL,
     client_id_issued_at           TIMESTAMP              DEFAULT CURRENT_TIMESTAMP NOT NULL,
     client_secret                 VARCHAR(200),
@@ -18,7 +18,7 @@ CREATE TABLE sso.system_oauth2_clients
     scopes                        VARCHAR(1000) NOT NULL,
     client_settings               VARCHAR(2000),
     token_settings                VARCHAR(2000),
-    constraint system_oauth2_clients_pk primary key (system_client_id)
+    constraint system_oauth2_clients_pk primary key (id)
 );
 
 COMMENT ON table sso.system_oauth2_clients IS 'OAuth2 клиенты системы';
@@ -38,7 +38,7 @@ CREATE UNIQUE INDEX idx_system_oauth2_clients_n1 ON sso.system_oauth2_clients (c
 
 CREATE TABLE IF NOT EXISTS sso.users
 (
-    user_id               UUID                        NOT NULL DEFAULT uuid_generate_v4(),
+    id                    UUID                        NOT NULL DEFAULT uuid_generate_v4(),
     email                 VARCHAR(100)                NOT NULL,
     password_hash         VARCHAR(500),
     first_name            varchar(100)                NOT NULL,
@@ -53,11 +53,11 @@ CREATE TABLE IF NOT EXISTS sso.users
     last_updated_by       VARCHAR(50)                 NOT NULL DEFAULT 'system',
     last_updated_date     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT current_timestamp,
     object_version_number INTEGER                     NOT NULL DEFAULT 0,
-    constraint users_pk PRIMARY KEY (user_id)
+    constraint users_pk PRIMARY KEY (id)
 );
 
 COMMENT ON TABLE sso.users IS 'Пользователи';
-COMMENT ON COLUMN sso.users.user_id IS 'УИ пользователя';
+COMMENT ON COLUMN sso.users.id IS 'УИ пользователя';
 COMMENT ON COLUMN sso.users.email IS 'Логин пользователя';
 COMMENT ON COLUMN sso.users.password_hash IS 'Хэш пароля';
 COMMENT ON COLUMN sso.users.first_name IS 'Начало действия учетной записи';

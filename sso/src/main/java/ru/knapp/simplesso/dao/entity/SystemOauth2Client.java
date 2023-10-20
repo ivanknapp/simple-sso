@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class SystemOauth2Client {
 
     @Id
-    @Column(name = "system_client_id", nullable = false)
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "system_oauth2_clients_s")
     private Long id;
 

@@ -6,6 +6,7 @@ import lombok.Setter;
 import ru.knapp.simplesso.dao.entity.common.VersionedBusinessEntity;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -15,7 +16,7 @@ import java.util.UUID;
 public class UserEntity extends VersionedBusinessEntity<UUID> {
 
     @Id
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(name = "email", nullable = false)
@@ -34,6 +35,13 @@ public class UserEntity extends VersionedBusinessEntity<UUID> {
     private String avatarUrl;
     @Column(name = "active", nullable = false)
     private Boolean active;
+
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(schema = "sso", name = "user_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    public List<RoleEntity> roles;
 
     @Override
     public UUID getId() {

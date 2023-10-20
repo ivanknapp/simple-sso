@@ -14,7 +14,7 @@ import ru.knapp.simplesso.resourceservice.CustomUserDetailsService;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration(proxyBeanMethods = false)
-@EnableWebSecurity(debug = false)
+@EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 

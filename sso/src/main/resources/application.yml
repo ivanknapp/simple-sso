@@ -12,8 +12,8 @@ spring:
       client:
         registration:
           github:
-            #clientId: VAULT
-            #clientSecret: VAULT
+          #clientId: VAULT
+          #clientSecret: VAULT
           google:
             #clientId: VAULT
             #clientSecret: VAULT
@@ -35,9 +35,9 @@ spring:
             userInfoUri: https://login.yandex.ru/info
 
   datasource:
-    url: "jdbc:postgresql://localhost:5432/spring"
-    #username: VAULT
-    #password: VAULT
+    url: "jdbc:postgresql://localhost:5432/sso-db"
+    username: root
+    password: root
     driver-class-name: "org.postgresql.Driver"
     hikari:
       connection-timeout: 30000
@@ -46,6 +46,29 @@ spring:
       initialization-fail-timeout: 1
       leak-detection-threshold: 0
       pool-name: "HikariPool-"
+
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+  session:
+    timeout: 1800
+    redis:
+      flush-mode: on_save
+      namespace: simple-sso:session
+      save-mode: on_set_attribute
+  data:
+    redis:
+      client-type: lettuce
+      database: 0
+      host: localhost
+      port: 6379
+      password: sso-redis-root
+      lettuce:
+        pool:
+          max-active: 16
+          max-idle: 8
 
 #logging:
 #  level:
