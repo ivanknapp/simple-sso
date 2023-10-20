@@ -1,0 +1,34 @@
+version: '1.0'
+services:
+  sso-postgres:
+    image: postgres
+    container_name: sso-postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: "root"
+      POSTGRES_USER: "root"
+      POSTGRES_DB: "sso-db"
+    restart: always
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - ./docker/postgres/data:/var/lib/postgresql/data
+    networks:
+      - sso-network
+
+  sso-redis:
+    image: redis
+    restart: always
+    container_name: sso-redis
+    command: redis-server --save 20 1 --loglevel warning --requirepass sso-redis-root
+    ports:
+      - '6379:6379'
+    networks:
+      - sso-network
+
+networks:
+  sso-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: "14.205.210.0/24"
